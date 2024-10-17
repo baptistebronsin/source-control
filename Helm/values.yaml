@@ -1,0 +1,16 @@
+# Configuration de la base de données (utilisez un service DB externe comme PostgreSQL)
+airflow:
+  database:
+    secretName: secret  # Remplacez par votre secret de DB
+
+# Configuration de KubernetesExecutor
+kubernetesExecutor:
+  enabled: true
+
+# Configurations supplémentaires
+dags:
+  persistence:
+    enabled: false
+
+workers:
+  replicas: 0
