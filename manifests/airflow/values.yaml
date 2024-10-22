@@ -1,5 +1,11 @@
 # Configuration de la base de données (utilisez un service DB externe comme PostgreSQL)
 airflow:
+
+  executor: KubernetesExecutor
+      
+  config:
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
+  
   database:
     secretName: secret  # Use the secret already defined in secret.yaml
 
@@ -14,15 +20,3 @@ airflow:
     user: postgres_user  # Match with the user in the secret
     passwordSecret: airflow-postgres-secret  # Reference the secret for the password
     existingSecret: true
-
-# Configuration de KubernetesExecutor
-kubernetesExecutor:
-  enabled: true
-
-# Configurations supplémentaires
-dags:
-  persistence:
-    enabled: false
-
-workers:
-  replicas: 0  # Adjust this based on your worker requirements

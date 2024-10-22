@@ -1,0 +1,30 @@
+global:
+  postgresql:
+    username: airflow                   # Utilisateur pour Airflow
+    password: airflow_password          # Mot de passe pour Airflow
+    database: airflow                   # Base de données pour Airflow
+    repmgrUsername: repmgr              # Utilisateur pour Repmgr
+    repmgrPassword: repmgr_password     # Mot de passe pour Repmgr
+
+    persistence:
+      enabled: true
+      size: 10Gi
+
+    replication:
+      enabled: true                       # Active la réplication
+      user: replicator                    # Utilisateur pour la réplication
+      password: replication_password 
+
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: 250m
+      limits:
+        memory: 512Mi
+        cpu: 500m
+        
+postgresql:
+  initdbScripts:
+    create-repmgr-db: |
+      CREATE DATABASE repmgr;
+      GRANT ALL PRIVILEGES ON DATABASE repmgr TO repmgr;

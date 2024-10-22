@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: airflow-gitops
+  namespace: myargo  # Le namespace où ArgoCD est installé
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/baptistebronsin/source-control # Lien vers ton dépôt Git
+    targetRevision: main  # Branche à suivre (peut être main, master, ou une autre branche)
+    path: ./  # Le chemin dans ton dépôt où sont les manifests
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: airflow  # Namespace où les applications seront déployées
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

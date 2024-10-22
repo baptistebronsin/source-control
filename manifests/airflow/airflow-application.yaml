@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: airflow
+  namespace: myargo
+
+spec:
+  project: default
+
+  source:
+    repoURL: oci://registry-1.docker.io/bitnamicharts/airflow
+    chart: airflow
+    targetRevision: 1.8.0
+
+    helm:
+      valueFiles:
+        - values.yaml
+          
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: myargo  # The namespace where Airflow is installed
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true  # Automatically create namespace if it doesn't exist
