@@ -1,0 +1,19 @@
+global:
+
+postgresql:
+  username: postgres
+  password: "postgres123"
+  database: postgres
+  repmgrPassword: "repmgr123"
+  debug: true
+  persistence:
+    enabled: true
+    size: 1Gi
+    mountPath: "/bitnami/postgresql"
+
+pgpool:
+  enabled: true  # Activé pour la haute disponibilité
+  adminUsername: admin
+  adminPassword: admin123
+
+replicaCount: 3 

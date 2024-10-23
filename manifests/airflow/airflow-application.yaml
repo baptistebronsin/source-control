@@ -16,6 +16,14 @@ spec:
     helm:
       valueFiles:
         - values.yaml
+
+  sources:
+    - repoURL: https://github.com/apache/airflow
+      targetRevision: main
+      path: charts/stable/airflow
+    - repoURL: https://github.com/baptistebronsin/source-control
+      targetRevision: main
+      path: ./
           
   destination:
     server: https://kubernetes.default.svc

@@ -1,4 +1,3 @@
-# Configuration de la base de données (utilisez un service DB externe comme PostgreSQL)
 airflow:
 
   executor: KubernetesExecutor
@@ -7,16 +6,16 @@ airflow:
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
   
   database:
-    secretName: secret  # Use the secret already defined in secret.yaml
+    secretName: secret
 
   # External PostgreSQL DB settings
   postgresql:
     enabled: false  # Disable built-in PostgreSQL
   externalDatabase:
     type: postgresql
-    host: postgres.myargo.svc.cluster.local  # Use the internal cluster service
+    host: postgres-ha-postgresql-ha-pgpool.postgres.svc.cluster.local
     port: 5432
-    database: postgres_db  # Make sure this matches the DB in the secret
-    user: postgres_user  # Match with the user in the secret
-    passwordSecret: airflow-postgres-secret  # Reference the secret for the password
+    database: postgres 
+    user: postgres 
+    passwordSecret: postgres123
     existingSecret: true
