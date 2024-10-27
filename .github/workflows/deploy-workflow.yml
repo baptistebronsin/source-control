@@ -3,7 +3,7 @@ name: Deploy Airflow with ArgoCD
 on:
   push:
     branches:
-      - main  # Déclenche la CI/CD lors des pushs sur la branche principale
+      - ArgoCD/Airflow_install  # Déclenche la CI/CD lors des pushs sur la branche
   workflow_dispatch:  # Permet de déclencher manuellement le pipeline
 
 jobs:
