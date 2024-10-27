@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: airflow
+  namespace: myargo
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: airflow
+    targetRevision: 20.0.0  # MAJ avec la dernière version stable d'Airflow
+
+    helm:
+      values: |
+        airflow:
+          executor: KubernetesExecutor
+          config:
+            AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
+        workers:
+          replicas: 3
+          
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: airflow  # Namespace où airflow est installé
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true #Crée namespace si existe pas
