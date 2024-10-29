@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: airflow
+  namespace: myargo
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: airflow
+    targetRevision: 20.0.0
+    helm:
+      valueFiles:
+        - ./airflow/values.yaml
+          
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: myargo
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

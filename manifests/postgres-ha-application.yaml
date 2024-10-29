@@ -1,25 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-
 metadata:
-  name: airflow
+  name: postgresql-ha
   namespace: myargo
-
 spec:
   project: default
-
+  
   source:
-    repoURL: https://charts.bitnami.com/bitnami
-    chart: airflow
-    targetRevision: 20.0.0
+    repoUrl: https://charts.bitnami.com/bitnami
+    chart: postgresql-ha
+    targetRevision: 14.3.4
     helm:
       valueFiles:
-        - values.yaml
-          
+        - ./postgresql-ha/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: myargo
-
   syncPolicy:
     automated:
       prune: true
