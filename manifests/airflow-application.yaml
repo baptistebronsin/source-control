@@ -30,6 +30,13 @@ spec:
             user: postgres 
             passwordSecret: postgres123
             existingSecret: true
+        createUserJob:
+          useHelmHooks: false
+          applyCustomEnv: false
+        migrateDatabaseJob:
+          useHelmHooks: false
+          applyCustomEnv: false
+        useStandardNaming: true
           
   destination:
     server: https://kubernetes.default.svc
