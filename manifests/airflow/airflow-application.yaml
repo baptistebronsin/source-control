@@ -9,29 +9,20 @@ spec:
   project: default
 
   source:
-    repoURL: oci://registry-1.docker.io/bitnamicharts/airflow
+    repoURL: https://charts.bitnami.com/bitnami
     chart: airflow
-    targetRevision: 1.8.0
-
+    targetRevision: 20.0.0
     helm:
       valueFiles:
         - values.yaml
-
-  sources:
-    - repoURL: https://github.com/apache/airflow
-      targetRevision: main
-      path: charts/stable/airflow
-    - repoURL: https://github.com/baptistebronsin/source-control
-      targetRevision: main
-      path: ./
           
   destination:
     server: https://kubernetes.default.svc
-    namespace: myargo  # The namespace where Airflow is installed
+    namespace: myargo
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true  # Automatically create namespace if it doesn't exist
+      - CreateNamespace=true

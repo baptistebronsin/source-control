@@ -12,7 +12,7 @@ postgresql:
     mountPath: "/bitnami/postgresql"
 
 pgpool:
-  enabled: true  # Activé pour la haute disponibilité
+  enabled: true
   adminUsername: admin
   adminPassword: admin123
 
