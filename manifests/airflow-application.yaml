@@ -28,7 +28,6 @@ spec:
           database: postgres 
           user: postgres 
           passwordSecret: postgres123
-          existingSecret: true
         createUserJob:
           useHelmHooks: false
           applyCustomEnv: false
