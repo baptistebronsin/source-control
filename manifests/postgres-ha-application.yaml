@@ -5,9 +5,9 @@ metadata:
   namespace: myargo
 spec:
   project: default
-  
+
   source:
-    repoUrl: https://charts.bitnami.com/bitnami
+    repoURL: https://charts.bitnami.com/bitnami
     chart: postgresql-ha
     targetRevision: 14.3.4
     helm:
