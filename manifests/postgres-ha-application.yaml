@@ -12,7 +12,7 @@ spec:
     targetRevision: 14.3.4
     helm:
       valueFiles:
-        - ./postgresql-ha/values.yaml
+        - manifests/postgresql-ha/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: myargo
