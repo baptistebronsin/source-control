@@ -11,8 +11,24 @@ spec:
     chart: postgresql-ha
     targetRevision: 14.3.4
     helm:
-      valueFiles:
-        - postgres-values.yaml
+      values: |
+        postgresql:
+          username: postgres
+          password: "postgres123"
+          database: postgres
+          repmgrPassword: "repmgr123"
+          debug: true
+          persistence:
+            enabled: true
+            size: 1Gi
+            mountPath: "/bitnami/postgresql"
+
+        pgpool:
+          enabled: true
+          adminUsername: admin
+          adminPassword: admin123
+
+        replicaCount: 3 
   destination:
     server: https://kubernetes.default.svc
     namespace: myargo

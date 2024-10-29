@@ -13,8 +13,23 @@ spec:
     chart: airflow
     targetRevision: 20.0.0
     helm:
-      valueFiles:
-        - manifests/airflow/values.yaml
+      values: |
+        airflow:
+          executor: KubernetesExecutor
+          config:
+            AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
+          database:
+            secretName: secret
+          postgresql:
+            enabled: false
+          externalDatabase:
+            type: postgresql
+            host: postgres-ha-postgresql-ha-pgpool.postgres.svc.cluster.local
+            port: 5432
+            database: postgres 
+            user: postgres 
+            passwordSecret: postgres123
+            existingSecret: true
           
   destination:
     server: https://kubernetes.default.svc
