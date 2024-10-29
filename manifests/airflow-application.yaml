@@ -14,23 +14,22 @@ spec:
     targetRevision: 18.0.0
     helm:
       values: |
-        airflow:
-          executor: KubernetesExecutor
-          config:
-            AIRFLOW__CORE__EXECUTOR: KubernetesExecutor
-            AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
-          database:
-            secretName: secret
-          postgresql:
-            enabled: false
-          externalDatabase:
-            type: postgresql
-            host: postgres-ha-postgresql-ha-pgpool.postgres.svc.cluster.local
-            port: 5432
-            database: postgres 
-            user: postgres 
-            passwordSecret: postgres123
-            existingSecret: true
+        executor: KubernetesExecutor
+        config:
+          AIRFLOW__CORE__EXECUTOR: KubernetesExecutor
+          AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
+        database:
+          secretName: secret
+        postgresql:
+          enabled: false
+        externalDatabase:
+          type: postgresql
+          host: postgres-ha-postgresql-ha-pgpool.postgres.svc.cluster.local
+          port: 5432
+          database: postgres 
+          user: postgres 
+          passwordSecret: postgres123
+          existingSecret: true
         createUserJob:
           useHelmHooks: false
           applyCustomEnv: false
@@ -38,6 +37,8 @@ spec:
           useHelmHooks: false
           applyCustomEnv: false
         useStandardNaming: true
+        redis:
+          enabled: false
           
   destination:
     server: https://kubernetes.default.svc
