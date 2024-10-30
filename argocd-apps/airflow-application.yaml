@@ -13,6 +13,9 @@ spec:
     chart: airflow
     targetRevision: 20.0.0
     helm:
+      parameters:
+        - name: "executor"
+          value: "KubernetesExecutor"
       values: |
         executor: "KubernetesExecutor"
         config:
