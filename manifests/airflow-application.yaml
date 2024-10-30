@@ -28,7 +28,7 @@ spec:
           user: postgres
           pass: postgres123
           protocol: postgresql
-          host: host: postgresql-postgresql-ha-pgpool
+          host: postgresql-ha-pgpool
           port: 5432
           db: postgres
           sslmode: disable
