@@ -21,6 +21,7 @@ spec:
         config:
           AIRFLOW__CORE__EXECUTOR: KubernetesExecutor
           AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
+          AIRFLOW__LOGGING__LOGGING_LEVEL: DEBUG
         postgresql:
           enabled: false
         data:
