@@ -23,13 +23,14 @@ spec:
           AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
         postgresql:
           enabled: false
-        externalDatabase:
-          type: postgresql
+        data:
+        metadataConnection:
+          user: postgres
+          pass: postgres123
+          protocol: postgresql
           host: postgres-ha-postgresql-ha-pgpool.postgres.svc.cluster.local
           port: 5432
-          database: postgres 
-          user: postgres 
-          passwordSecret: postgres123
+          db: postgres
         createUserJob:
           useHelmHooks: false
           applyCustomEnv: false
