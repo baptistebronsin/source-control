@@ -11,6 +11,7 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami
     chart: airflow
+    targetRevision: 20.0.2
     helm:
       parameters:
         - name: "executor"
