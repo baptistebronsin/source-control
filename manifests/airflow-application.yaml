@@ -9,7 +9,7 @@ spec:
   project: default
 
   source:
-    rrepoURL: 'https://airflow.apache.org'
+    repoURL: 'https://airflow.apache.org'
     chart: airflow
     targetRevision: 1.15.0
     helm:
