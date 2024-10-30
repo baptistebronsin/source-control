@@ -14,11 +14,10 @@ spec:
     targetRevision: 20.0.0
     helm:
       values: |
-        airflow:
-          executor: "KubernetesExecutor"
-          config:
-            AIRFLOW__CORE__EXECUTOR: KubernetesExecutor
-            AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
+        executor: "KubernetesExecutor"
+        config:
+          AIRFLOW__CORE__EXECUTOR: KubernetesExecutor
+          AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
         postgresql:
           enabled: false
         externalDatabase:
