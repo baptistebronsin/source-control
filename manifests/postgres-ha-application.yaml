@@ -25,10 +25,6 @@ spec:
               enabled: true
               size: 1Gi
               mountPath: "/bitnami/postgresql"
-
-          pgpool:
-            adminUsername: "admin"
-            adminPassword: "admin123"
   destination:
     server: https://kubernetes.default.svc
     namespace: myargo
