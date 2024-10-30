@@ -21,10 +21,14 @@ spec:
             repmgrPassword: "repmgr123"
             repmgrDatabase: "repmgr"
             debug: true
-            persistence:
-              enabled: true
-              size: 1Gi
-              mountPath: "/bitnami/postgresql"
+          pgpool:
+            adminUsername: "postgres"
+            adminPassword: "postgres123"
+        postgresql:
+          username: "postgres"
+          password: "postgres123"
+          database: "postgres"
+          postgresPassword: "postgres123"
   destination:
     server: https://kubernetes.default.svc
     namespace: myargo
