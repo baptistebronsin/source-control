@@ -21,7 +21,6 @@ spec:
         config:
           AIRFLOW__CORE__EXECUTOR: KubernetesExecutor
           AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
-          AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:postgres123@postgresql-ha-pgpool.myargo.svc.cluster.local:5432/postgres
         postgresql:
           enabled: false
         data:
@@ -29,9 +28,10 @@ spec:
           user: postgres
           pass: postgres123
           protocol: postgresql
-          host: postgresql-ha-pgpool.myargo.svc.cluster.local
+          host: host: postgresql-postgresql-ha-pgpool
           port: 5432
           db: postgres
+          sslmode: disable
         createUserJob:
           useHelmHooks: false
           applyCustomEnv: false
