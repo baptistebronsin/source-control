@@ -9,7 +9,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://charts.bitnami.com/bitnami
+    rrepoURL: 'https://airflow.apache.org'
     chart: airflow
     targetRevision: 1.15.0
     helm:
