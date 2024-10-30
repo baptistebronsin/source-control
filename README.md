@@ -5,7 +5,7 @@
 - Pauline Contat
 - Giada Flora De Martino
 
-## Attendus
+## Attendus
 - Installer ArgoCD via Helm
 - Installer AirFlow avec kubernetes executor via ArgoCD
 - Proposer un pipeline de déploiement pour AirFlow + Dags (postgres en H.A.)
@@ -13,14 +13,14 @@
 ## Prérequis
 - Posséder une machine avec un accès à internet (une machine virtuelle par exemple)
 
-## Installation
+## Installation
 ### Kubernetes
 | Mot clé   | Signification                    |
 |-----------|----------------------------------|
 | `ter-vm`  | Terminal de la machine virtuelle |
 | `ter-loc` | Terminal de la machine locale    |
 
-(Ces mots clés ne seront utilisées que pour cette partie.)
+(Ces mots clés ne seront utilisés que pour cette partie.)
 
 1. Installation du moteur de Kubernetes _k3s_ sur la machine virtuelle dans `ter-vm`
 ```bash
