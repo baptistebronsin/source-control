@@ -9,13 +9,10 @@ spec:
   project: default
 
   source:
-    repoURL: https://charts.bitnami.com/bitnami
+    repoURL: 'https://airflow.apache.org'
     chart: airflow
-    targetRevision: 20.0.2
+    targetRevision: 1.15.0
     helm:
-      parameters:
-        - name: "executor"
-          value: "KubernetesExecutor"
       values: |
         executor: "KubernetesExecutor"
         config:
