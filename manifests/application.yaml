@@ -10,7 +10,7 @@ spec:
 
   source:
     repoURL: https://github.com/baptistebronsin/source-control
-    path: ./argocd-apps/
+    path: ./manifests/
     targetRevision: "fix_airflow_install"
 
   destination:
