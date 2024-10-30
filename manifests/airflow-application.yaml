@@ -18,14 +18,14 @@ spec:
         postgresql:
           enabled: false
         data:
-        metadataConnection:
-          user: postgres
-          pass: postgres123
-          protocol: postgresql
-          host: postgresql-ha-pgpool
-          port: 5432
-          db: postgres
-          sslmode: disable
+          metadataConnection:
+            user: postgres
+            pass: postgres123
+            protocol: postgresql
+            host: postgresql-ha-pgpool
+            port: 5432
+            db: postgres
+            sslmode: disable
         createUserJob:
           useHelmHooks: false
           applyCustomEnv: false
