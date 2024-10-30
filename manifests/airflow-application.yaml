@@ -28,7 +28,7 @@ spec:
           user: postgres
           pass: postgres123
           protocol: postgresql
-          host: postgres-ha-postgresql-ha-pgpool.myargo.svc.cluster.local
+          host: postgresql-ha-pgpool.myargo.svc.cluster.local
           port: 5432
           db: postgres
         createUserJob:
