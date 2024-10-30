@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: airflow
+  namespace: myargo
+
+spec:
+  project: default
+
+  source:
+    repoURL: 'https://airflow.apache.org'
+    chart: airflow
+    targetRevision: 1.15.0
+    helm:
+      values: |
+        executor: "KubernetesExecutor"
+        postgresql:
+          enabled: false
+        data:
+          metadataConnection:
+            user: postgres
+            pass: postgres123
+            protocol: postgresql
+            host: postgresql-ha-pgpool
+            port: 5432
+            db: postgres
+            sslmode: disable
+        createUserJob:
+          useHelmHooks: false
+          applyCustomEnv: false
+        migrateDatabaseJob:
+          useHelmHooks: false
+          applyCustomEnv: false
+        useStandardNaming: true
+        redis:
+          enabled: false
+          
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: myargo
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

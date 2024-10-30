@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: airflow-gitops
+  namespace: myargo
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/baptistebronsin/source-control
+    path: ./manifests/
+    targetRevision: "fix_airflow_install"
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: myargo
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
