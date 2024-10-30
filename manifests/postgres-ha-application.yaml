@@ -12,23 +12,23 @@ spec:
     targetRevision: 14.3.4
     helm:
       values: |
-        postgresql:
-          username: postgres
-          password: "postgres123"
-          database: postgres
-          repmgrPassword: "repmgr123"
-          debug: true
-          persistence:
-            enabled: true
-            size: 1Gi
-            mountPath: "/bitnami/postgresql"
+        global:
+          postgresql:
+            username: "postgres"
+            password: "postgres123"
+            database: "postgres"
+            repmgrUsername: "repmgr"
+            repmgrPassword: "repmgr123"
+            repmgrDatabase: "repmgr"
+            debug: true
+            persistence:
+              enabled: true
+              size: 1Gi
+              mountPath: "/bitnami/postgresql"
 
-        pgpool:
-          enabled: true
-          adminUsername: admin
-          adminPassword: admin123
-
-        replicaCount: 3 
+          pgpool:
+            adminUsername: "admin"
+            adminPassword: "admin123"
   destination:
     server: https://kubernetes.default.svc
     namespace: myargo
