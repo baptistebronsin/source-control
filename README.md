@@ -133,8 +133,6 @@ kubectl -n myargo port-forward svc/airflow-webserver 8080:8080
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
-Ajouter la clé publique générée aux deploy keys du repo Github.
-
 2. Créer le secret dans le cluster Kubernetes
 ```bash
 kubectl create secret generic airflow-ssh-secret   --from-file=gitSshKey=cle_privee   --from-file=known_hosts=known_hosts   --from-file=id_ed25519.pub=cle_publique.pub   -n myargo
