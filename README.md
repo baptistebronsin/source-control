@@ -141,6 +141,8 @@ kubectl create secret generic airflow-ssh-secret   --from-file=gitSshKey=cle_pri
 ```
 **Attention**: Pensez à remplacer `cle_privee`, `known_hosts` et `cle_publique.pub` par les chemins correspondants.
 
-3. Rafraîchir manuellement l'application Airflow depuis l'interface ArgoCD
+3. Ajouter la clé public générée au dépôt Github dans les `Deploy keys`
 
-4. Attendre 5min et les DAGs devraient apparaître dans l'interface web Airflow
+4. Rafraîchir manuellement l'application Airflow depuis l'interface ArgoCD
+
+5. Attendre 5min et les DAGs devraient apparaître dans l'interface web Airflow
