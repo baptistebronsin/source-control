@@ -35,7 +35,14 @@ spec:
         useStandardNaming: true
         redis:
           enabled: false
-          
+        dags:
+          gitSync:
+            enabled: true
+            repo: git@github.com:baptistebronsin/source-control.git
+            branch: main
+            subPath: "workflow"
+            sshKeySecret: airflow-ssh-secret
+            knownHosts: github-known-hosts
   destination:
     server: https://kubernetes.default.svc
     namespace: myargo
