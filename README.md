@@ -109,7 +109,7 @@ kubectl -n myargo get secret argocd-initial-admin-secret -o jsonpath='{.data.pas
 8. Se connecter à ArgoCD via le navigateur à l'adresse `http://localhost:9000` avec les identifiants récupérés
 
 ## Déployer AirFlow avec Kubernetes Executor
-1. Se placer dans le répertoire `manifests` du projet et exécuter la commande suivante
+1. Se placer à la racine du projet et exécuter la commande suivante
 ```bash
 kubectl apply -f application.yaml
 ```
@@ -129,7 +129,6 @@ kubectl -n myargo port-forward svc/airflow-webserver 8080:8080
 ## Synchroniser les DAGs
 
 1. Générer une clé SSH
-
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
@@ -137,7 +136,11 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 Ajouter la clé publique générée aux deploy keys du repo Github.
 
 2. Créer le secret dans le cluster Kubernetes
-
 ```bash
 kubectl create secret generic airflow-ssh-secret   --from-file=gitSshKey=cle_privee   --from-file=known_hosts=known_hosts   --from-file=id_ed25519.pub=cle_publique.pub   -n myargo
 ```
+**Attention**: Pensez à remplacer `cle_privee`, `known_hosts` et `cle_publique.pub` par les chemins correspondants.
+
+3. Rafraîchir manuellement l'application Airflow depuis l'interface ArgoCD
+
+4. Attendre 5min et les DAGs devraient apparaître dans l'interface web Airflow
