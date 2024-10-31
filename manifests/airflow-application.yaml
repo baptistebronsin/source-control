@@ -37,6 +37,7 @@ spec:
           enabled: false
         dags:
           gitSync:
+            verbose: 5
             enabled: true
             repo: git@github.com:baptistebronsin/source-control.git
             branch: main
